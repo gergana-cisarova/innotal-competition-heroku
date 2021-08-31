@@ -1,10 +1,7 @@
 package com.example.competition.services.impl;
 
 import com.example.competition.services.CarouselService;
-
 import com.example.competition.services.ImageShuffler;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -16,7 +13,6 @@ import java.util.List;
 @Service
 public class CarouselServiceImpl implements CarouselService {
     private final ImageShuffler imageShuffler;
-    private Logger LOGGER = LoggerFactory.getLogger(CarouselServiceImpl.class);
     private List<String> images = new ArrayList<>();
 
     public CarouselServiceImpl(@Value("${carousel.images}") List<String> images, ImageShuffler imageShuffler) {
@@ -48,7 +44,6 @@ public class CarouselServiceImpl implements CarouselService {
 
     @Scheduled(cron =  "*/10 * * * * *")
     public void refresh() {
-        LOGGER.info("Shuffling images...");
 //        Collections.shuffle(images);
         imageShuffler.shuffle(images);
 
