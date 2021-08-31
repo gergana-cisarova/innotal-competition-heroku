@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="fragments/commons :: head">
+</head>
+<body >
+<header th:replace="fragments/commons :: navigation">
+</header>
+
+<main class="container-fluid flex-fill">
+<div class="container-fluid">
+
+    <!-- Banner -->
+    <section id="banner_generic">
+        <h1>Projects</h1>
+    </section>
+</div>
+<!-- Text -->
+
+    <div class="container-fluid">
+<p></p>
+        <div class="mt-5 col-sm-12 my-auto align-self-center">
+            <button id="all" type="button">Show all</button>
+            <p></p>
+            <input id="searchInput" class="form-control mr-sm-2 w-50 btn-secondary"  type="search"
+               placeholder="Enter search term for student name or University" aria-label="Search">
+
+
+        </div>
+        <p></p>
+        <div id="confirm" class="alert alert-success" role="alert" th:text="${message}"></div>
+
+        <table>
+
+    <table class="alt">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>University</th>
+                <th>Area</th>
+                <th>Final Grade</th>
+                <th>Evaluation Details</th>
+
+            </tr>
+            </thead>
+            <tbody id="projectList">
+
+            </tbody>
+
+        </table>
+    </div>
+
+<footer th:replace="fragments/commons :: footer" class="footer bg-blur">
+</footer>
+</main>
+<script th:src="@{/js/search-bar1.js}"></script>
+<script th:src="@{/js/confirmation.js}"></script>
+
+</body>
+</html>

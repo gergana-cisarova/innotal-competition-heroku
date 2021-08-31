@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="fragments/commons :: head">
+</head>
+<body>
+
+<!-- Header -->
+<header th:replace="fragments/commons :: navigation">
+</header>
+
+<main class="container-fluid flex-fill">
+    <div class="container-fluid">
+
+        <!-- Banner -->
+        <section id="banner_generic">
+            <h1>Guidelines for participants</h1>
+        </section>
+    </div>
+
+    <!-- Text -->
+
+    <div class="d-flex justify-content-center ">
+        <div>
+
+            <p>You have already evaluated this team, as shown below. If you submit a new evaluation,
+                you will overwrite the existing one.</p>
+
+            <h5 class="text-danger">Evaluate again (for convenience, the feedback will be pre-filled from your previous evaluation):</h5>
+        </div>
+    </div> </div>
+
+    </div>
+    <!-- Footer -->
+    <footer th:replace="fragments/commons :: footer" class="footer bg-blur">
+    </footer>
+</main>
+
+<script>
+    window.onload = textHandler();
+</script>
+</body>
+</html>

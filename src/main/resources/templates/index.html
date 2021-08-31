@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="fragments/commons :: head">
+</head>
+
+<body>
+
+<!-- Header -->
+<header th:replace="fragments/commons :: navigation">
+</header>
+<main class="container-fluid flex-fill">
+    <div class="container-fluid">
+
+<!-- Banner -->
+<section id="banner">
+    <section id="banner_text">
+
+    <h1>Welcome to the INNOTAL Student Business Idea Competition</h1>
+
+    <p>Take your first entrepreneurial steps with us!</p>
+    </section>
+</section>
+</div>
+<!-- One -->
+    <div class="container-fluid">
+
+<section id="one" class="wrapper">
+    <div class="inner">
+        <div class="flex flex-3">
+            <article>
+                <header>
+                    <h3>Results from the First Round</h3>
+                </header>
+                <p>The First Round is held 3 September 2021. Register on the app and click here to see the results.</p>
+                <footer>
+                    <a href="/students/results" class="button special">See the results</a>
+                </footer>
+            </article>
+            <article>
+                <header>
+                    <h3>Results from the Finals</h3>
+                </header>
+                <p>The First Round produced 3 finalists from the two Evaluation Panels. They pitched their ideas to the whole Jury on 4 September 2021. Register on the ap and click here to see the results.</p>
+                <footer>
+                    <a href="/students/results_finals" class="button special">See the final results</a>
+                </footer>
+            </article>
+            <article>
+                <header>
+                    <h3>See the Evaluation Guidelines</h3>
+                </header>
+                <p>Click here to see the evaluation and pitching guidelines. No registration is necessary.</p>
+                <footer>
+                    <a href="/students/guidelines" class="button special">See the guidelines</a>
+                </footer>
+            </article>
+        </div>
+    </div>
+</section>
+</div>
+
+<!-- Two -->
+
+<!-- Three -->
+</main>
+<!-- Footer -->
+<footer th:replace="fragments/commons :: footer" class="footer bg-blur">
+</footer>
+
+
+</body>
+</html>

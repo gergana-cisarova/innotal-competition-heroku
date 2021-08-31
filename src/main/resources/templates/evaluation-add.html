@@ -1,0 +1,203 @@
+<!DOCTYPE HTML>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="fragments/commons :: head">
+</head>
+<body>
+
+<!-- Header -->
+<header th:replace="fragments/commons :: navigation">
+</header>
+
+<main class="container-fluid flex-fill">
+    <div class="container-fluid">
+
+        <!-- Banner -->
+        <section id="banner_generic">
+            <h1>Evaluate the team</h1>
+        </section>
+    </div>
+
+    <!-- Text -->
+
+    <div class="d-flex justify-content-center ">
+        <div>
+            <h4 th:text="${studentServiceModel.name}">Name</h4>
+            <h5 th:text="${studentServiceModel.university}">University</h5>
+            <div th:if="${exists==1}">
+            <p class="text-danger">You have already evaluated this team, as shown below. If you submit a new evaluation,
+                you will overwrite the existing one.</p>
+            <table>
+                <tr>
+                    <td>Grade "Problem definition"</td>
+                    <td th:text="${existingEval.firstGrade}">grade 1</td>
+                </tr>
+                <tr>
+                    <td>Grade "Explanation of the Solution"</td>
+                    <td th:text="${existingEval.secondGrade}">grade 2</td>
+                </tr>
+                <tr>
+                    <td>Grade "Delivering value"</td>
+                    <td th:text="${existingEval.thirdGrade}">grade 3</td>
+                </tr>
+                <tr>
+                    <td>Grade "Pitch Credibility"</td>
+                    <td th:text="${existingEval.fourthGrade}">grade 4</td>
+                <tr>
+                    <td>Grade "Future plans"</td>
+                    <td th:text="${existingEval.fifthGrade}">grade 5</td>
+                </tr>
+                <tr>
+                    <td>Feedback / Comments</td>
+                    <td th:text="${existingEval.feedback}">Feedback</td>
+                <tr>
+            </table>
+            <h5 class="text-danger">Evaluate again (for convenience, the feedback will be pre-filled from your previous evaluation):</h5>
+        </div>
+    </div> </div>
+    <div class="d-flex justify-content-center ">
+        <div class="row g-3">
+            <form
+                    th:object="${evaluationAddBindingModel}"
+                    th:action="@{/students/evaluate/{id}(id=${id})}"
+                    method="POST">
+                <!-- FirstGrade -->
+                <div>
+                    <div class="col-auto">
+                        <label for="inputFirstGrade" class="col-form-label ">Grade "Problem definition"</label>
+                    </div>
+                    <div class="col-auto">
+                        <input name="firstGrade"
+                               th:field="${evaluationAddBindingModel.firstGrade}"
+                               th:value="${evaluationAddBindingModel.firstGrade}"
+                               th:errorclass="is-invalid"
+                               type="number" step="0.1" min=0 max="5"
+                               id="inputFirstGrade"
+                               class="form-control"
+                               aria-describedby="firstGradeHelpInline">
+                        <small id="firstGradeError" class="invalid-feedback text-light form-text bg-danger rounded">The
+                            grade must be between 0 and 5, and can be a decimal number</small>
+
+                    </div>
+                </div>
+                <!-- SecondGrade -->
+                <div>
+                    <div class="col-auto">
+                        <label for="inputSecondGrade" class="col-form-label ">Grade "Explanation of the
+                            Solution"</label>
+                    </div>
+                    <div class="col-auto">
+                        <input name="secondGrade"
+                               th:field="${evaluationAddBindingModel.secondGrade}"
+                               th:value="${evaluationAddBindingModel.secondGrade}"
+                               th:errorclass="is-invalid"
+                               type="number" step="0.1" min=0 max="5"
+                               id="inputSecondGrade"
+                               class="form-control"
+                               aria-describedby="secondGradeHelpInline">
+                        <small id="secondGradeError" class="invalid-feedback text-light form-text bg-danger rounded">The
+                            grade must be between 0 and 5, and can be a decimal number</small>
+
+                    </div>
+                </div>
+                <!-- ThirdGrade -->
+                <div>
+                    <div class="col-auto">
+                        <label for="inputThirdGrade" class="col-form-label ">Grade "Delivering value"</label>
+                    </div>
+                    <div class="col-auto">
+                        <input name="thirdGrade"
+                               th:field="${evaluationAddBindingModel.thirdGrade}"
+                               th:value="${evaluationAddBindingModel.thirdGrade}"
+                               th:errorclass="is-invalid"
+                               type="number" step="0.1" min=0 max="5"
+                               id="inputThirdGrade"
+                               class="form-control"
+                               aria-describedby="thirdGradeHelpInline">
+                        <small id="thirdGradeError" class="invalid-feedback text-light form-text bg-danger rounded">The
+                            grade must be between 0 and 5, and can be a decimal number</small>
+
+                    </div>
+                </div>
+
+                <!-- FourthGrade -->
+                <div>
+                    <div class="col-auto">
+                        <label for="inputFourthGrade" class="col-form-label ">Grade "Pitch Credibility"</label>
+                    </div>
+                    <div class="col-auto">
+                        <input name="fourthGrade"
+                               th:field="${evaluationAddBindingModel.fourthGrade}"
+                               th:value="${evaluationAddBindingModel.fourthGrade}"
+                               th:errorclass="is-invalid"
+                               type="number" step="0.1" min=0 max="5"
+                               id="inputFourthGrade"
+                               class="form-control"
+                               aria-describedby="fourthGradeHelpInline">
+                        <small id="fourthGradeError" class="invalid-feedback text-light form-text bg-danger rounded">The
+                            grade must be between 0 and 5, and can be a decimal number</small>
+
+                    </div>
+                </div>
+
+                <!-- FifthGrade -->
+                <div>
+                    <div class="col-auto">
+                        <label for="inputFifthGrade" class="col-form-label ">Grade "Future plans"</label>
+                    </div>
+                    <div class="col-auto">
+                        <input name="fifthGrade"
+                               th:field="${evaluationAddBindingModel.fifthGrade}"
+                               th:value="${evaluationAddBindingModel.fifthGrade}"
+                               th:errorclass="is-invalid"
+                               type="number" step="0.1" min=0 max="5"
+                               id="inputFifthGrade"
+                               class="form-control"
+                               aria-describedby="fifthGradeHelpInline">
+                        <small id="fifthGradeError" class="invalid-feedback text-light form-text bg-danger rounded">The
+                            grade must be between 0 and 5, and can be a decimal number</small>
+
+                    </div>
+                </div>
+
+                <!-- Feedback -->
+                <div>
+                    <div class="col-auto">
+                        <label for="inputFeedback" class="col-form-label ">Feedback / Comments </label>
+                    </div>
+                    <div class="col-auto">
+                                        <textarea name="feedback"
+                                                  th:field="${existingEval.feedback}"
+                                                  th:value="${evaluationAddBindingModel.feedback}"
+                                                  th:errorclass="is-invalid"
+                                                  required minlength="5" maxlength="1500"
+                                                  id="inputFeedback"
+                                                  class="form-control"
+                                                  aria-describedby="feedbackInline">
+                                        </textarea>
+                        <small id="feedbackError"
+                               class="invalid-feedback text-light form-text bg-danger rounded">The feedback must be
+                            at least 5 characters long and not longer than 1500 characters</small>
+                    </div>
+                </div>
+                <!--                                 EO: Description -->
+
+                <div class="d-flex justify-content-center mt-4">
+                    <button class="btn btn-dark btn-block w-50" type="submit">Submit</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer th:replace="fragments/commons :: footer" class="footer bg-blur">
+    </footer>
+</main>
+
+<script>
+    window.onload = textHandler();
+</script>
+</body>
+</html>

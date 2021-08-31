@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="fragments/commons :: head">
+</head>
+<body>
+<header th:replace="fragments/commons :: navigation">
+</header>
+
+<main class="container-fluid flex-fill">
+    <div class="container-fluid">
+
+        <!-- Banner -->
+        <section id="banner_generic">
+            <h1>Evaluations Details</h1>
+        </section>
+    </div>
+    <!-- Text -->
+
+    <div class="container-fluid">
+        <p></p>
+        <table>
+            <tbody th:object="${current}">
+            <tr>
+                <td>Name</td>
+                <td th:text="*{name}"></td>
+            </tr>
+            <tr>
+                <td>University</td>
+                <td th:text="*{university}"></td>
+            </tr>
+            <tr>
+            <tr>
+                <td>Description</td>
+                <td th:text="*{description}"></td>
+            </tr>
+            <tr>
+                <td>Area</td>
+                <td th:text="*{area}"></td>
+            </tr>
+            <tr>
+                <td>Average grade from all evaluations</td>
+                <td th:text="*{averageGrade}"></td>
+            </tr>
+            <tr>
+                <td>Details of evaluations</td>
+                <td th:utext="*{evaluations}"></td>
+            </tr>
+
+            </tbody>
+
+        </table>
+    </div>
+</main>
+
+<footer th:replace="fragments/commons :: footer" class="footer bg-blur">
+</footer>
+</body>
+</html>
