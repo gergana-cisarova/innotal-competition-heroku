@@ -5,84 +5,91 @@
 
 <head th:fragment="head">
     <title>INNOTAL Student Business Idea Competition </title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="/css/main.css" />
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="/css/main.css"/>
     <link rel="stylesheet" href="/css/style.css"/>
     <link rel="stylesheet" href="/css/reset-css.css"/>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
 <header th:fragment="navigation" id="header">
     <div class="container-fluid">
-    <div class="inner">
-        <nav class="navbar navbar-expand-lg bg-nav rounded">
-            <a href="/">INNOTAL Business Idea Competition</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div sec:authorize="hasRole('ROLE_ADMIN')" class="dropdown">
-                <button type="button" id="dropdownMenuButton"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Admin Panel
+        <div class="inner">
+            <nav class="navbar navbar-expand-lg bg-nav rounded">
+                <a href="/">INNOTAL Business Idea Competition</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="/students/add">Add Students</a>
-                    <a class="dropdown-item" href="/users/manage">Manage users</a>
-                    <a class="dropdown-item" href="/roles/add">Manage admin roles</a>
+
+                <div sec:authorize="hasRole('ROLE_ADMIN')" class="dropdown">
+                    <button type="button" id="dropdownMenuButton"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Admin Panel
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="/students/add">Add Students</a>
+                        <a class="dropdown-item" href="/users/manage">Manage users</a>
+                        <a class="dropdown-item" href="/roles/add">Manage admin roles</a>
+                    </div>
                 </div>
-            </div>
 
 
-            <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
-                <ul class="navbar-nav row">
+                <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav row">
 
-                    <li class="nav-item">
-                        <a
-                                sec:authorize="!isAuthenticated()"
-                                th:href="@{/users/login}">Login
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <!--                        <a class="nav-link text-white active "-->
-                        <a
-                                sec:authorize="!isAuthenticated()"
-                                th:href="@{/users/register}">
-                            Register
-                        </a>
-                    </li>
-                    <li sec:authorize="hasRole('ROLE_USER')" class="nav-item ">
-                        <a href="/students/evaluate_all">1st Phase</a>
-                    </li>
-                    <li sec:authorize="hasRole('ROLE_USER')" class="nav-item ">
-                        <a href="/students/evaluate_finals">Finals</a>
-                    </li>
+                        <li class="nav-item">
+                            <a
+                                    sec:authorize="!isAuthenticated()"
+                                    th:href="@{/users/login}">Login
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <!--                        <a class="nav-link text-white active "-->
+                            <a
+                                    sec:authorize="!isAuthenticated()"
+                                    th:href="@{/users/register}">
+                                Register
+                            </a>
+                        </li>
+                        <li sec:authorize="hasRole('ROLE_USER')" class="nav-item ">
+                            <a href="/students/evaluate_all">1st Phase</a>
+                        </li>
+                        <li sec:authorize="hasRole('ROLE_USER')" class="nav-item ">
+                            <a href="/students/evaluate_finals">Finals</a>
+                        </li>
 
-                    <li sec:authorize="hasRole('ROLE_GUEST')" class="nav-item ">
-                        <a  href="/students/results">Results 1st Phase</a>
-                    </li>
-                    <li sec:authorize="hasRole('ROLE_GUEST')" class="nav-item ">
-                        <a  href="/students/results_finals">Results Finals</a>
-                    </li>
-                    <li sec:authorize="isAuthenticated()" class="nav-item">
+                        <li sec:authorize="hasRole('ROLE_GUEST')" class="nav-item ">
+                            <a href="/students/results">Results 1st Phase</a>
+                        </li>
+                        <li sec:authorize="hasRole('ROLE_GUEST')" class="nav-item ">
+                            <a href="/students/results_finals">Results Finals</a>
+                        </li>
+                        <li sec:authorize="isAuthenticated()" class="nav-item">
 
-                        <form th:action="@{/logout}" method="POST">
-                            <button type="submit" >
-                                Logout
-                            </button>
-                        </form>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+                            <form th:action="@{/logout}" method="POST">
+                                <button type="submit">
+                                    Logout
+                                </button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
 
-    </div>
+        </div>
     </div>
 </header>
 
@@ -91,6 +98,11 @@
         <div class="flex">
             <div class="copyright">
                 &copy; INNOTAL, European Center for Quality 2021
+
+            </div>
+            <div >
+                <img height="100" src="images/logo_1.jpg" alt="Co-funded by the EU"/>
+                <img height="150" src="images/logoINNOTAL.jpg" alt="INNOTAL project"/>
             </div>
         </div>
     </div>

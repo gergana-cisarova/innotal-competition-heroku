@@ -88,10 +88,6 @@ public class StudentController {
     @GetMapping("/add")
     public String addStudent(Model model) {
 
-        model.addAttribute("firstImg", carouselService.firstImage());
-        model.addAttribute("secondImg", carouselService.secondImage());
-        model.addAttribute("thirdImg", carouselService.thirdImage());
-
         return "student-add";
     }
 
@@ -245,7 +241,10 @@ public class StudentController {
     }
 
     @GetMapping("/guidelines")
-    public String guidelines() {
+    public String guidelines(Model model) {
+        model.addAttribute("firstImg", carouselService.firstImage());
+        model.addAttribute("secondImg", carouselService.secondImage());
+        model.addAttribute("thirdImg", carouselService.thirdImage());
         return "guidelines";
     }
 }
