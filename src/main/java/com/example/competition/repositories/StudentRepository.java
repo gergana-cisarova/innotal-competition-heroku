@@ -14,7 +14,7 @@ public interface StudentRepository extends JpaRepository<Student, String> {
     @Query("SELECT s FROM Student s WHERE s.iteration= :phase  order by s.panel asc, s.averageGrade desc ")
     List<Student> findAllByPhaseByTotalGradeDesc(@Param("phase") Iteration phase );
 
-    @Query("SELECT s FROM Student s WHERE s.iteration= :phase order by s.orderOfPitch asc")
+    @Query("SELECT s FROM Student s WHERE s.iteration= :phase order by s.panel asc, s.orderOfPitch asc")
     LinkedList<Student> findAllByOrderByPhase(@Param("phase") Iteration phase );
 
     Optional<Student> findByName (String studentName);

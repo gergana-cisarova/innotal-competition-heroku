@@ -10,51 +10,55 @@
 </header>
 
 <main class="container-fluid flex-fill">
-<div class="container-fluid">
+    <div class="container-fluid">
 
 
-    <section id="banner_generic">
-        <h1>Student teams</h1>
-    </section>
-</div>
+        <section id="banner_generic">
+            <h1>Student teams</h1>
+        </section>
+    </div>
     <p></p>
 
     <div id="confirm" class="alert alert-success" role="alert" th:text="${message}">
 
-            </div>
+    </div>
 
 
     <div class="container-fluid">
 
-                <table class="alt">
-                    <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>University</th>
-                        <th>Area</th>
-                        <th sec:authorize="hasRole('ROLE_GUEST')">Average grade</th>
-                        <th sec:authorize="hasRole('ROLE_GUEST') or hasRole('ROLE_USER')">Actions</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr th:each="s : ${students}" th:object="${s}">
-                        <td th:text="*{name}"></td>
-                        <td th:text="*{university}"></td>
-                        <td th:text="*{area}"></td>
-                        <td sec:authorize="hasRole('ROLE_GUEST')" th:text="*{averageGrade}"></td>
-                        <td sec:authorize="hasRole('ROLE_GUEST') or hasRole('ROLE_USER')">
+        <table class="alt">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>University</th>
+                <th>Area</th>
+                <th>Panel</th>
+                <th>Order</th>
+                <th sec:authorize="hasRole('ROLE_GUEST')">Average grade</th>
+                <th sec:authorize="hasRole('ROLE_GUEST') or hasRole('ROLE_USER')">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="s : ${students}" th:object="${s}">
+                <td th:text="*{name}"></td>
+                <td th:text="*{university}"></td>
+                <td th:text="*{area}"></td>
+                <td th:text="*{panel}"></td>
+                <td th:text="*{orderOfPitch}"></td>
+                <td sec:authorize="hasRole('ROLE_GUEST')" th:text="*{averageGrade}"></td>
+                <td sec:authorize="hasRole('ROLE_GUEST') or hasRole('ROLE_USER')">
 
-                            <a sec:authorize="hasRole('ROLE_GUEST')" th:href="@{/students/details/{id}(id=*{id})}">
-                                <button type="button">Detailed evaluation</button></a>
-                            <a sec:authorize="hasRole('ROLE_USER')" th:href="@{/students/evaluate/{id}(id=*{id})}">
-                                <button type="button">Evaluate this team</button></a>
-                            <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/students/delete/{id}(id=*{id})}">
-                                <button type="button">Delete</button></a>
-                             </td>
-                    </tr>
-                    </tbody>
+                    <a sec:authorize="hasRole('ROLE_GUEST')" th:href="@{/students/details/{id}(id=*{id})}">
+                        <button type="button">Detailed evaluation</button></a>
+                    <a sec:authorize="hasRole('ROLE_USER')" th:href="@{/students/evaluate/{id}(id=*{id})}">
+                        <button type="button">Evaluate this team</button></a>
+                    <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/students/delete/{id}(id=*{id})}">
+                        <button type="button">Delete</button></a>
+                </td>
+            </tr>
+            </tbody>
 
-                </table>
+        </table>
 
     </div>
 
