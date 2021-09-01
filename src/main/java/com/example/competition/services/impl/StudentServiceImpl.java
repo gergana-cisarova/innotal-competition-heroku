@@ -129,7 +129,7 @@ public class StudentServiceImpl implements StudentService {
 
         StringBuilder sb = new StringBuilder();
         student.getEvaluations().forEach(e -> {
-                    sb.append(String.format("<strong>Evaluation </strong> <br /> Grade 1 'Problem definition':%.2f" +
+                    sb.append(String.format("<strong>Evaluation </strong> <br /> Grade 1 'Problem definition': %.2f" +
                             " <br />Grade 2 'Explanation of the Solution': %.2f" +
                             " <br />Grade 3 'Delivering value': %.2f" +
                             " <br />Grade 4 'Pitch Credibility': %.2f" +
